@@ -16,10 +16,10 @@ jobs:
         run: cmake -B build -A x64
 
       - name: Compilar (Release)
-        run: cmake --build build --config Release --parallel 4
+        run: cmake --build build --config Release --target TAPERMATE_VST3 --parallel 4
 
       - name: Subir VST3
         uses: actions/upload-artifact@v4
         with:
           name: TAPEMATE-v1.1-VST3-Windows
-          path: build/*/Release/VST3/
+          path: build/TAPERMATE_artefacts/Release/VST3/
