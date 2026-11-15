@@ -1,23 +1,25 @@
-name: Build TAPERMATE v1.1
+name: Compilación TAPERMATE v1.1
 
 on:
   push:
   workflow_dispatch:
 
 jobs:
-  build:
+  construir:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Configurar (CMake, x64)
         run: cmake -B build -A x64
 
       - name: Compilar (Release)
-        run: cmake --build build --config Release --target TAPERMATE_VST3 --parallel 4
+        run: cmake --build build --config Release --target TAPEMATE_VST3 --parallel 4
 
       - name: Subir VST3
         uses: actions/upload-artifact@v4
         with:
-          name: TAPERMATE-v1.1-VST3-Windows
-          path: build/TAPERMATE_artefacts/Release/VST3/
+          name: TAPEMATE-v1.1-VST3-Windows
+          path: build/TAPEMATE_artefacts/Release/VST3/
